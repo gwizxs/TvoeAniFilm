@@ -1,0 +1,29 @@
+.links {
+  margin-left: 1.25rem;
+  display: flex;
+  margin-bottom: 1rem;
+  li {
+    margin-right: 3rem; 
+  }
+
+  .link {
+    font-weight: 500;
+    transition-duration: 300ms;
+    animation-duration: 300ms;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    color: #BABABA;
+  }
+}
+
+.text {
+  color: #FFFFFF;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+}
+
+.icons :last-child {
+  margin-left: 0.5rem;
+}

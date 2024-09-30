@@ -1,0 +1,17 @@
+.container {
+	display: flex;
+	justify-content: center; /* Изменяем на space-between */
+	align-items: center;
+	padding-left: 0.75rem;
+	padding-right: 0.75rem;
+	padding-top: 1rem;
+	padding-bottom: 0.5rem;
+	width: 100%;
+	background: #7373e0;
+  }
+  
+  .menu {
+	display: flex;
+	align-items: center;
+  }
+  

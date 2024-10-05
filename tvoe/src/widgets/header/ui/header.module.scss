@@ -1,14 +1,26 @@
 .container {
+	position: fixed; /* Makes the header fixed */
+	top: 0; /* Positions it at the top */
+	left: 0; /* Aligns it to the left */
+	right: 0; /* Aligns it to the right */
+	z-index: 1000; /* Ensures it stays above other content */
 	display: flex;
-	justify-content: center; /* Изменяем на space-between */
+	justify-content: center; /* Adjust as needed */
 	align-items: center;
 	padding-left: 0.75rem;
 	padding-right: 0.75rem;
 	padding-top: 1rem;
 	padding-bottom: 0.5rem;
 	width: 100%;
-	background: #7373e0;
+	background: #eaeaf5;
+    backdrop-filter: blur(16px) saturate(200%);
+    -webkit-backdrop-filter: blur(16px) saturate(200%);
+    background-color: rgba(17, 25, 40, 0.25);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+	border-radius: 1rem;
   }
+  
   
   .menu {
 	display: flex;

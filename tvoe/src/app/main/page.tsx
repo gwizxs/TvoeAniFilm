@@ -1,11 +1,14 @@
-import HeaderTrailer from "@/entities/Header-Trailer/ui/HeaderTrailer";
-import SliderMovie from "@/features/sliderMovie/ui/SliderMovie";
+import CardFilm from "@/entities/Cards-Film/ui/CardFilm";
+import FilmsTrailer from "@/entities/Trailer/components/Films-Trailer/film/FilmsTrailer";
+
+
 
 
 export default function main() {
     return (
         <div>
-        <HeaderTrailer/>
+        <FilmsTrailer/>
+        <CardFilm/>
         </div>
     )
 }

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import '@/shared/assets/styles/globals.scss';
 import { Header } from '@/widgets/header';
+import { AntdRegistry } from '@ant-design/nextjs-registry';
 
 const inter = Inter({ subsets: ['cyrillic', 'latin'] });
 
@@ -19,7 +20,7 @@ export default function RootLayout({
       <html lang="ru">
          <body className={inter.className}>
             <Header/>
-            <main>{children}</main>
+            <AntdRegistry>{children}</AntdRegistry>
          </body>
       </html>
    );

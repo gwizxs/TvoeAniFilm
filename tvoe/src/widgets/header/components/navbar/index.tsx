@@ -5,7 +5,7 @@ import { useMobile } from '@/shared/hooks/useMobile';
 import { menu } from '@/shared/constants/menu';
 import { MobileNavBar } from '../navbar-mobile'
 import cl from './navbar.module.scss';
-import { Button } from '@/shared/ui/button';
+import { Button } from 'antd';
 
 export const NavBar = () => {
    const isMobile = useMobile(640);
@@ -18,7 +18,7 @@ export const NavBar = () => {
             {menu.map((item, i) => (
                <li key={i}>
                   <Link href={item.url} className={cl.link}>
-                     <Button variant='destructive' className={cl.icons}>
+                     <Button type='text' className={cl.icons}>
                         <span>{item.icon}</span>
                         <span>{item.text}</span>
                      </Button>

@@ -1,0 +1,35 @@
+
+.Card {
+    padding: 1rem;
+}
+
+.CardContent {
+    width: 17.25rem;
+    height: 26.5rem;
+    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
+    word-break: 'break-word';
+    overflow: 'hidden'; 
+    text-overflow: 'ellipsis'; 
+    cursor: pointer;
+}
+
+.CardContent:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.ImgCardContent {
+    margin-top: 0.5rem;
+}
+
+.Vacancy {
+    margin-right: 2rem;
+}
+
+
+.descriptionCard {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}

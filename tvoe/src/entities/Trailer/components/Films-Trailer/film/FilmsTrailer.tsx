@@ -1,11 +1,11 @@
 'use client'
 
 import Image from 'next/image';
-import cl from './HeaderTrailer.module.scss'
-import LegendsOfLoana from '../header-trailer/LegendsOfLoana.webp'
-import Text from '../header-trailer/TextLegendOfLoana.webp'
+import cl from './FilmsTrailer.module.scss'
+import LegendsOfLoana from '../assets/LegendsOfLoana.webp'
+import Text from '../assets/TextLegendOfLoana.webp'
 
-const HeaderTrailer = () => {
+const FilmsTrailer = () => {
   return (
     <div className={cl.rootIMG}>
       <div className={cl.slide}>
@@ -27,4 +27,4 @@ const HeaderTrailer = () => {
   );
 };
 
-export default HeaderTrailer;
+export default FilmsTrailer;

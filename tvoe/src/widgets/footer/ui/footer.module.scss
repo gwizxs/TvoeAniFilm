@@ -1,0 +1,38 @@
+.footer {
+    padding: 1.5rem;
+ 
+    .main {
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+ 
+       .copyrights {
+          margin-top: 0.5rem;
+          color: #1d1d1d;
+       }
+ 
+       .info {
+          color: #6b7280; 
+          max-width: 18rem; 
+          margin-top: 0.25rem; 
+       }
+ 
+       .source {
+          color: rgba(7, 7, 7, 0.9); 
+          margin-top: 0.75rem; 
+ 
+          a {
+             text-decoration: underline; 
+             color: #3b82f6; 
+             font-weight: 500; 
+          }
+       }
+    }
+ 
+    hr {
+       height: 1px; 
+       margin-top: 1.25rem; 
+       background-color: rgba(31, 41, 55, 0.4); 
+    }
+ }
+ 

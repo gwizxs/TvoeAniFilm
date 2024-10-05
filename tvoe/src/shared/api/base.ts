@@ -1,23 +1,15 @@
 // import { AxiosInstance } from "axios";
 import axios from "axios";
 import { Bounce, toast } from "react-toastify";
+import { ANIME_HOST } from "../constants/host";
 
 
 
 function createInstance() {
     const instance = axios.create({
-        baseURL: 'Apiurl',
+        baseURL: ANIME_HOST,
         headers: {}
     })
-
-    instance.interceptors.request.use(
-        (config) => {
-            const token = localStorage.getItem('token')
-            if (token && config.url !== '/auth') config.headers.Authorization = `Bearer ${token}`
-            return config
-        },
-        (error) => { return Promise.reject(error) }
-    )
 
     instance.interceptors.response.use(
         res => {

@@ -3,10 +3,12 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { observer } from 'mobx-react-lite';
 import { franchiseStore } from '@/shared/store/api/franchise-store/franchise-cards-store';
-import { ANIME_HOST } from '@/shared/constants/host';
+import { ANIME_MAIN_HOST } from '@/shared/constants/host';
+import cl from './CardAnime.module.scss'
+import { Button, Col, Row } from 'antd';
 
 const FranchiseList = observer(() => {
-    const [limit, setLimit] = useState(10); 
+    const [limit, setLimit] = useState(10);
 
     useEffect(() => {
         franchiseStore.getFranchisesAction();
@@ -24,30 +26,39 @@ const FranchiseList = observer(() => {
     const displayedFranchises = franchises.slice(0, limit);
 
     return (
-        <div>
-            <h1>Anime Franchises</h1>
-            <ul>
-                {displayedFranchises.map((franchise) => (
-                    <li key={franchise.id}>
-                        <h2>{franchise.name} ({franchise.name_english})</h2>
-                        <p>Rating: {franchise.rating}</p>
-                        <p>First Year: {franchise.first_year}</p>
-                        <p>Total Releases: {franchise.total_releases}</p>
-                        <p>Total Episodes: {franchise.total_episodes}</p>
-                        <p>Total Duration: {franchise.total_duration}</p>
-                        <Image
-                            src={'https://anilibria.top/' + franchise.image.optimized.preview}
-                            alt={franchise.name}
-                            width={500} 
-                            height={300} 
-                        />
-                    </li>
-                ))}
-            </ul>
-            {limit < franchises.length && (
-                <button onClick={() => setLimit(limit + 10)}>Загрузить еще</button>
-            )}
-        </div>
+<div className={cl.SlideContainer}>
+    <Row gutter={16} justify="start"> 
+        {displayedFranchises.map((franchise) => (
+            <Col key={franchise.id} span={6}> 
+                <div className={cl.Card}>
+                    <div className={cl.ImgContainer}>
+                        <span className={cl.overlay}></span>
+                        <div className={cl.CardImage}>
+                            <span className={cl.Rating}>{franchise.rating}</span>
+                            <Image
+                                src={ANIME_MAIN_HOST + franchise.image.optimized.preview}
+                                alt={franchise.name}
+                                className={cl.CardImg}
+                                width={300}
+                                height={300}
+                            />
+                        </div>
+                    </div>
+                    <div className={cl.CardContent}>
+                        <h2 className={cl.Name}>{franchise.name}</h2>
+                        <p className={cl.Description}>Год выхода: {franchise.first_year}</p>
+                        <p className={cl.Description}>Всего релизов: {franchise.total_releases}</p>
+                        <p className={cl.Description}>Всего эпизодов: {franchise.total_episodes}</p>
+                    </div>
+                </div>
+            </Col>
+        ))}
+    </Row>
+    {limit < franchises.length && (
+        <Button onClick={() => setLimit(limit + 10)}>Загрузить еще</Button>
+    )}
+</div>
+
     );
 });
 

@@ -1,0 +1,75 @@
+.Card {
+    width: 20rem;
+    height: 24rem;
+    border-radius: 1.5em;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s; 
+    cursor: pointer;
+    margin: 1rem 0;
+    margin-left: 2rem;
+}
+
+.Card:hover {
+    transform: scale(1.05);
+}
+
+.CardImage {
+    position: relative;
+    height: 12rem;
+    width: 100%; 
+    background: #FFF;
+    padding: 0.5rem; 
+}
+
+.CardImage .CardImg {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 1.2em; 
+    border: 1px solid #4070F4;
+}
+
+.SlideContent {
+    gap: 1em; 
+    margin: 0 2.5em; 
+}
+.CardContent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1em; 
+    position: relative; 
+}
+
+.Rating {
+    position: absolute; 
+    top: 1em; 
+    left: 1em; 
+    background-color: rgba(255, 255, 255, 0.582); 
+    padding: 0.3em 0.5em; 
+    border-radius: 0.5em; 
+    font-weight: bold; 
+    color: #000000; 
+    z-index: 2; 
+}
+
+.Name {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #333;
+    margin-top: 0.5rem;
+    margin-bottom: 0.9rem;
+}
+
+.Description {
+    font-size: 0.9em; 
+    color: #707070;
+    text-align: left; 
+    margin: 0.2em 0; 
+}
+
+
+.SlideContainer {
+    margin-top: 7%;
+}

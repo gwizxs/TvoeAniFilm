@@ -1,4 +1,3 @@
-
 import { makeAutoObservable } from "mobx";
 import { fromPromise, IPromiseBasedObservable } from "mobx-utils";
 import { getRandomFranchises } from "@/shared/api/cards-anime/api";
@@ -13,7 +12,7 @@ class FranchiseStore {
 
     getFranchisesAction = async () => {
         try {
-            this.franchisesData = await fromPromise(getRandomFranchises());
+            this.franchisesData = fromPromise(getRandomFranchises());
         } catch (error) {
             console.log(error);
         }

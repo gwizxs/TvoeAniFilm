@@ -6,9 +6,11 @@ import { franchiseStore } from '@/shared/store/api/franchise-store/franchise-car
 import { ANIME_MAIN_HOST } from '@/shared/constants/host';
 import cl from './CardAnime.module.scss'
 import { Button, Col, Row } from 'antd';
+import { useRouter } from 'next/navigation';
 
 const FranchiseList = observer(() => {
-    const [limit, setLimit] = useState(10);
+    const [limit, setLimit] = useState(8);
+    const { push } = useRouter();
 
     useEffect(() => {
         franchiseStore.getFranchisesAction();
@@ -25,12 +27,16 @@ const FranchiseList = observer(() => {
     const franchises = franchiseStore.franchisesData.value || [];
     const displayedFranchises = franchises.slice(0, limit);
 
+    
+
     return (
 <div className={cl.SlideContainer}>
     <Row gutter={16} justify="start"> 
         {displayedFranchises.map((franchise) => (
             <Col key={franchise.id} span={6}> 
-                <div className={cl.Card}>
+                <div className={cl.Card}
+                onClick={() => push(`/Anime/${franchise.id}`)}
+                >
                     <div className={cl.ImgContainer}>
                         <span className={cl.overlay}></span>
                         <div className={cl.CardImage}>
@@ -55,7 +61,7 @@ const FranchiseList = observer(() => {
         ))}
     </Row>
     {limit < franchises.length && (
-        <Button onClick={() => setLimit(limit + 10)}>Загрузить еще</Button>
+        <Button onClick={() => setLimit(limit + 8)}>Загрузить еще</Button>
     )}
 </div>
 

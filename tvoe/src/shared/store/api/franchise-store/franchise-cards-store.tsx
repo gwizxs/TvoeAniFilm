@@ -1,7 +1,7 @@
 import { makeAutoObservable } from "mobx";
 import { fromPromise, IPromiseBasedObservable } from "mobx-utils";
-import { getRandomFranchises } from "@/shared/api/cards-anime/api";
-import { Franchise } from "@/shared/api/cards-anime/types";
+import { getRandomFranchises } from "@/shared/api/Franchise/index";
+import { Franchise } from "@/shared/api/Franchise/types";
 
 class FranchiseStore {
     constructor() {

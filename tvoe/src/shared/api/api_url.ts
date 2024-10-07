@@ -1,4 +1,5 @@
 export const API_URL = {
+    // ITS A ANIME URLS
     // GET TITLE SCHEDULE. TYPE :: now / week
     schedule: (type: string) => `anime/schedule/${type}`,
  
@@ -22,3 +23,21 @@ export const API_URL = {
     statuses: () => 'anime/catalog/references/publish-statuses',
     catalog_genres: () => 'anime/catalog/references/genres',
  };
+
+
+
+
+// FILMS URLS
+
+export const FILMS_URL = {
+    search_films_name: () => 'movie/search',
+    searh_films_universal: () => 'movie?page=1&limit=10',
+    search_seasons: () => 'movie/possible-values-by-field',
+
+    reviews: () => 'review?page=1&limit=10',
+    films: () => 'movie?page=1&limit=10&notNullFields=id&notNullFields=poster.url',
+    awards: () => 'movie/awards',
+
+}
+
+

@@ -37,7 +37,7 @@ const AnimePage = () => {
   }
 
   if (error) {
-    return <div>Ошибка: {error.message}</div>;
+    return <div>Ошибка: {error.messag}</div>;
   }
 
   return (

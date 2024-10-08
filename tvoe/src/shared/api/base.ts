@@ -1,13 +1,16 @@
 import axios from "axios";
 import { Bounce, toast } from "react-toastify";
 import { ANIME_HOST, FILMS_HOST } from "../constants/host";
-
+import { KEY_KINO } from "../constants/key";
 
 function createAxiosInstance(baseURL: string, additionalHeaders: { [key: string]: string } = {}) {
   const instance = axios.create({
     baseURL,
-    headers: {}
+    headers: {
+     'X-API-KEY': KEY_KINO
+    }
   });
+
 
   Object.entries(additionalHeaders).forEach(([key, value]) => {
     instance.defaults.headers.common[key] = value;
@@ -44,7 +47,5 @@ function createAxiosInstance(baseURL: string, additionalHeaders: { [key: string]
 }
 
 export const createInstanceV1 = createAxiosInstance(ANIME_HOST); 
-export const createInstanceV2 = createAxiosInstance(FILMS_HOST, {
-    'X-API-KEY': 'GD8PF0X-G56MBXA-K0V37SZ-Y8VQJS3',
-}); 
+export const createInstanceV2 = createAxiosInstance(FILMS_HOST); 
 

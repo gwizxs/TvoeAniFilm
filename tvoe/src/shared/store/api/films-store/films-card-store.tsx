@@ -8,7 +8,7 @@ class FilmStore {
         makeAutoObservable(this);
     }
 
-    filmsData?: IPromiseBasedObservable<Movie[]>;
+    filmsData?: IPromiseBasedObservable<Movie[] | []>;
 
     getFilmsAction = async (page: number, limit: number) => {
         try {

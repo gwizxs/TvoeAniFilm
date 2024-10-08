@@ -34,7 +34,7 @@ function createAxiosInstance(baseURL: string, additionalHeaders: { [key: string]
             })
         }
       } else {
-        console.error("Ошибка запроса:", err);
+        toast.error("Ошибка запроса:", err);
         toast.error("Произошла ошибка. Пожалуйста, попробуйте позже.");
       }
     }
@@ -45,6 +45,6 @@ function createAxiosInstance(baseURL: string, additionalHeaders: { [key: string]
 
 export const createInstanceV1 = createAxiosInstance(ANIME_HOST); 
 export const createInstanceV2 = createAxiosInstance(FILMS_HOST, {
-    'X-API-KEY': process.env.API_KEY_KINO || '',
+    'X-API-KEY': 'GD8PF0X-G56MBXA-K0V37SZ-Y8VQJS3',
 }); 
 

@@ -35,7 +35,7 @@ export const FILMS_URL = {
     search_seasons: () => 'movie/possible-values-by-field',
 
     reviews: () => 'review?page=1&limit=10',
-    films: () => 'movie?page=1&limit=10&notNullFields=id&notNullFields=poster.url',
+    films: () => 'movie',
     awards: () => 'movie/awards',
 
 }

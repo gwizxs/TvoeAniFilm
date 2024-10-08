@@ -1,3 +1,4 @@
+
 import CardFilm from "@/entities/Cards-Film/ui/CardFilm";
 import FilmsTrailer from "@/entities/Trailer/components/Films-Trailer/film/FilmsTrailer";
 

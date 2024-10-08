@@ -10,7 +10,8 @@ export const getFilms = async ({page, limit}: {page: number, limit: number}): Pr
             params: {
                 page,
                 limit, 
-                notNullFields: 'poster.url'
+                query: 'top250',
+                notNullFields: ['poster.url']
             }
         }))
         return response.data; 

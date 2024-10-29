@@ -1,43 +1,54 @@
-import { Menu } from 'lucide-react';
+'use client'
+import clsx from 'clsx';
 import Link from 'next/link';
-
-import {
-   Sheet,
-   SheetContent,
-   SheetHeader,
-   SheetTitle,
-   SheetTrigger,
-} from '@/shared/ui/sheet';
-import { Button } from '@/shared/ui/button';
 import { menu } from '@/shared/constants/menu';
-import cl from './navbarMob.module.scss';
+import { useState } from 'react';
+import styles from './navbarMob.module.scss';
+import { AlignJustify } from 'lucide-react';
 
 export const MobileNavBar = () => {
-   return (
-      <Sheet>
-         <SheetTrigger asChild>
-            <Button variant={'link'}>
-               <Menu />
-            </Button>
-         </SheetTrigger>
-         <SheetContent
-            side={'left'}
-            className={cl.content}
-            aria-describedby={undefined}
-         >
-            <SheetHeader>
-               <SheetTitle>Меню</SheetTitle>
-            </SheetHeader>
-            <nav>
-               <ul>
-                  {menu.map((item, i) => (
-                     <li className={cl.listitem} key={i}>
-                        <Link href={item.url}>{item.text}</Link>
-                     </li>
-                  ))}
-               </ul>
-            </nav>
-         </SheetContent>
-      </Sheet>
-   );
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  return (
+    <div className={styles.container}>
+      <button
+        className={clsx(styles.menuButton, {
+          [styles.menuButtonOpened]: isOpen,
+        })}
+        onClick={toggleMenu}
+      >
+        <AlignJustify className={styles.icon} />
+      </button>
+      {isOpen && (
+        <div className={styles.menu}>
+          <ul className={clsx('list-reset', styles.list)}>
+            {menu.map((item) => {
+              return (
+                <li
+                  className={clsx(
+                    styles.item,
+                    { [styles.isCurrent]: item.url === window.location.pathname }
+                  )}
+                  key={item.text}
+                >
+                  <Link
+                    className={styles.link}
+                    href={item.url}
+                    onClick={toggleMenu}
+                  >
+                    {item.text}
+                  </Link>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      )}
+    </div>
+  );
 };
+

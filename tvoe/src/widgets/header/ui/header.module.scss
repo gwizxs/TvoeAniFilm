@@ -18,6 +18,8 @@
   
 	&.fixed {
 	  transform: translateY(-100%);
+	  transition-duration: 0.5s;
+	  transition-timing-function: ease-out;
   
 	  @media (max-width: 1024px) {
 		transform: translateX(0%);

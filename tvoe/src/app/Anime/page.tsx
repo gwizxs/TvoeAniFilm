@@ -1,4 +1,4 @@
-import FranchiseList from "@/entities/FranchiseList/ui/CardAnime";
+import { FranchiseList } from "@/entities/FranchiseList"
 
 
 export default function Anime() {

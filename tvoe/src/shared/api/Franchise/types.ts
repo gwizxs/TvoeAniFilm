@@ -9,7 +9,7 @@ export interface FranchiseImage {
 }
 
 export interface Franchise {
-    franchise_releases: any;
+    slug: any;
     id: string;
     name: string;
     name_english: string;
@@ -45,7 +45,6 @@ interface AgeRating {
 }
 
 export interface Release {
-    release: any;
     id: number;
     type: {
         value: string;
@@ -101,15 +100,15 @@ interface FranchiseRelease {
 
 interface Anime {
     id: string;
-    name: string;
-    name_english: string;
-    rating: number;
-    last_year: number;
-    first_year: number;
-    total_releases: number;
-    total_episodes: number;
-    total_duration: string; 
-    total_duration_in_seconds: number;
-    image: Image;
-    franchise_releases: FranchiseRelease[];
+    title: string;
+    englishTitle: string;
+    score: number;
+    finalYear: number;
+    startYear: number;
+    releaseCount: number;
+    episodeCount: number;
+    duration: string;
+    durationInSeconds: number;
+    artwork: Image;
+    franchiseReleases: FranchiseRelease[];
 }

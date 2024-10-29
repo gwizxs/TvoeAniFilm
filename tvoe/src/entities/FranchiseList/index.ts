@@ -1,1 +1,1 @@
-export * from './ui/CardAnime'
+export {FranchiseList} from './ui/CardAnime'

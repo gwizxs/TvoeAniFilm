@@ -1,15 +1,24 @@
+'use client'
 
+import clsx from 'clsx';
 import { NavBar } from '../components/navbar';
-import cl from './header.module.scss';
-import { Logo } from '@/entities/logo';
+import s from './header.module.scss';
+import { useHeaderFixed } from '../lib';
 
 export const Header = () => {
+	const { isFixed } = useHeaderFixed();
 	return (
-		<header className={cl.container}>
-			<div className={cl.menu}>
-				<Logo />
-				<NavBar />
-			</div>
-		</header>
+		<header
+		className={clsx(s.header, {
+		  [s.fixed]: isFixed,
+		})}
+	  >
+		<div className={clsx('container', s.container)}>
+		  <div className={s.row}>
+			<NavBar />
+		  </div>
+		</div>
+	  </header>
 	);
 }
+

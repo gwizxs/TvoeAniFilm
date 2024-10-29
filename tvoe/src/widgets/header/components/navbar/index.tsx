@@ -1,10 +1,11 @@
 'use client'
 
 import Link from 'next/link';
+import clsx from 'clsx';
 import { useMobile } from '@/shared/hooks/useMobile';
 import { menu } from '@/shared/constants/menu';
 import { MobileNavBar } from '../navbar-mobile'
-import cl from './navbar.module.scss';
+import s from './navbar.module.scss';
 import { Button } from 'antd';
 
 export const NavBar = () => {
@@ -13,19 +14,23 @@ export const NavBar = () => {
    if (isMobile) return <MobileNavBar />
 
    return (
-      <nav>
-         <ul className={cl.links}>
-            {menu.map((item, i) => (
-               <li key={i}>
-                  <Link href={item.url} className={cl.link}>
-                     <Button type='text' className={cl.icons}>
-                        <span>{item.icon}</span>
-                        <span>{item.text}</span>
-                     </Button>
-
-                  </Link>
-               </li>
-            ))}
+      <nav className={s.nav}>
+         <ul className={clsx('list-reset', s.list)}>
+            {menu.map((item) => {
+               return (
+                  <li className={s.item} key={item.text}>
+                     <Link
+                        className={clsx(s.link, s.isCurrent)}
+                        href={item.url}
+                     >
+                        <Button type='text'>
+                           <span>{item.icon}</span>
+                           <span>{item.text}</span>
+                        </Button>
+                     </Link>
+                  </li>
+               );
+            })}
          </ul>
       </nav>
    );

@@ -5,15 +5,27 @@ import { observer } from 'mobx-react-lite';
 import { franchiseStore } from '@/shared/store/api/franchise-store/franchise-cards-store';
 import { ANIME_MAIN_HOST } from '@/shared/constants/host';
 import cl from './CardAnime.module.scss'
-import { Button, Col, Row, Spin } from 'antd';
-import { useRouter } from 'next/navigation';
+import { Col, Row, Spin } from 'antd';
+import Link from 'next/link';
 
-const FranchiseList = observer(() => {
+export const FranchiseList = observer(() => {
     const [limit, setLimit] = useState(8);
-    const { push } = useRouter();
 
     useEffect(() => {
         franchiseStore.getFranchisesAction();
+    }, []);
+
+    const handleScroll = () => {
+        if (window.innerHeight + document.documentElement.scrollTop !== document.documentElement.offsetHeight) return;
+        if (!franchiseStore.franchisesData) return;
+        if (!franchiseStore.franchisesData.value) return;
+        setLimit((prevLimit) => Math.min(prevLimit + 8, franchiseStore.franchisesData.value.length));
+    };
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll);
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
     }, []);
 
     if (!franchiseStore.franchisesData) {
@@ -29,15 +41,13 @@ const FranchiseList = observer(() => {
     const franchises = franchiseStore.franchisesData.value || [];
     const displayedFranchises = franchises.slice(0, limit);
 
-
-
     return (
         <div className={cl.SlideContainer}>
             <Row gutter={16} justify="start">
                 {displayedFranchises.map((franchise) => (
                     <Col key={franchise.id} span={6}>
+                        <Link href={`/Anime/${franchise.id}`}>
                         <div className={cl.Card}
-                            onClick={() => push(`/Anime/${franchise.id}`)}
                         >
                             <div className={cl.ImgContainer}>
                                 <span className={cl.overlay}></span>
@@ -59,15 +69,10 @@ const FranchiseList = observer(() => {
                                 <p className={cl.Description}>Всего эпизодов: {franchise.total_episodes}</p>
                             </div>
                         </div>
+                        </Link>
                     </Col>
                 ))}
             </Row>
-            {limit < franchises.length && (
-                <Button onClick={() => setLimit(limit + 8)}>Загрузить еще</Button>
-            )}
         </div>
-
     );
 });
-
-export default FranchiseList;

@@ -29,6 +29,7 @@
     "react-dom": "^18",
     "react-slick": "^0.30.2",
     "react-toastify": "^10.0.5",
+    "react-transition-group": "^4.4.5",
     "sass": "^1.79.3",
     "scss": "^0.2.4",
     "tailwind-merge": "^2.5.2",

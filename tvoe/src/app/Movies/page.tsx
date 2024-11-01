@@ -1,14 +1,12 @@
 
-import CardFilm from "@/entities/Cards-Film/ui/CardFilm";
-import FilmsTrailer from "@/entities/Trailer/components/Films-Trailer/film/FilmsTrailer";
+import { ListFilm } from "@/widgets/List-films";
 
 
 
 export default function Movies() {
     return (
         <div>
-        <FilmsTrailer/>
-        <CardFilm/>
+            <ListFilm/>
         </div>
     )
 }

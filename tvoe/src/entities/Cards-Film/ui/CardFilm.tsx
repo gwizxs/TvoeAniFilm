@@ -1,58 +1,38 @@
-'use client' // Add the 'use client' directive
+'use client'
+import Image from 'next/image';
+import Link from 'next/link';
+import type { MovieEntity } from '@/shared/api/Films/types';
+import styles from './CardFilm.module.scss';
+import { paths } from '@/shared/routing/paths';
 
-import { Col, Row } from "antd";
-import cl from "./CardFilm.module.scss";
-import { observer } from "mobx-react-lite";
-import { filmStore } from "@/shared/store/api/films-store/films-card-store";
-import { useEffect } from "react";
-import { Movie } from "@/shared/api/Films/types";
-import Image from 'next/image'; 
-
-const CardFilm: React.FC = observer(() => {
-  const page = 1; 
-  const limit = 10; 
-
-  useEffect(() => {
-    console.log("Fetching films...");
-    filmStore.getFilmsAction(page, limit).then(() => {
-      console.log("Films fetched:", filmStore.filmsData);
-    });
-  }, [page, limit]);
-
-  if (filmStore.filmsData?.state === "pending") {
-    return <div>Loading...</div>;
-  }
-
-  if (filmStore.filmsData?.state === "rejected") {
-    return <div>Error loading films.</div>;
-  }
-
-  const films: Movie[] = filmStore.filmsData?.value || []; 
+interface MovieItemProps {
+  item: Partial<MovieEntity>;
+  rating?: number | null;
+  small?: boolean;
+}
+export const CardFilm = ({ item, small }: MovieItemProps) => {
   return (
-    <div className={cl.SlideContainer}>
-      <Row gutter={16} justify="start">
-      {Array.isArray(films) && films.map((film: Movie) => ( 
-          <Col key={film.id} span={6}>
-            <div className={cl.Card} onClick={() => '/qwerty'}> 
-              <div className={cl.ImgContainer}>
-                <span className={cl.overlay}></span>
-                <div className={cl.CardImage}>
-                  <span className={cl.Rating}>{film.rating.kp}</span> 
-                </div>
-              </div>
-              <div className={cl.CardContent}>
-                <h2 className={cl.Name}>{film.name || ''}</h2>
-                <p className={cl.Description}>
-                  Год выхода: {film.year}
-                </p>
-              </div>
-            </div>
-          </Col>
-        ))}
-      </Row>
-      {/* ... your logic for loading more films */}
-    </div>
+    <Link className={styles.item} href={paths.movie(item?.id)}>
+      <div className={styles.imageWrapper}>
+        {item?.id ? (
+          <Image
+            alt={item?.name ?? ''}
+            className={styles.image}
+            fill
+            quality={100}
+            sizes="100%"
+            src={`https://st.kp.yandex.net/images/film_iphone/iphone360_${item?.id}.jpg`}
+          />
+        ) : null}
+      </div>
+      <div className={styles.content}>
+        <h3 className={styles.name}>{item?.name}</h3>
+        {!small && (
+          <div className={styles.info}>
+            <span className={styles.year}>{item?.year}</span>
+          </div>
+        )}
+      </div>
+    </Link>
   );
-});
-
-export default CardFilm;
+};

@@ -1,27 +1,15 @@
-import { FILMS_URL } from "../api_url";
-import { createInstanceV2 } from "../base";
-import { Movie } from "./types";
+import { FILMS_HOST } from '@/shared/constants/host';
+import { createInstanceV2 } from '../base';
+
+export const createInternalRequestFx = createInstanceV2({
+  baseURL: process.env.INTERNAL_API_URL,
+});
+
+export const createCommonRequestFx = createInstanceV2({
+  baseURL: FILMS_HOST,
+  headers: {
+    'X-API-KEY': process.env.NEXT_PUBLIC_API_KINO ?? '',
+  },
+});
 
 
-
-export const getFilms = async ({ page, limit }: { page: number, limit: number }): Promise<Movie[]> => {
-    const axiosInstance = createInstanceV2;
-    const response = (await axiosInstance.get(FILMS_URL.films(), {
-        params: {
-            page,
-            limit,
-            notNullFields: 'poster.url'
-        }
-    }))
-    return response.data;
-};
-
-
-export const SearchFilms = async (searchTerm: string) => {
-    const response = await createInstanceV2.get(FILMS_URL.search_films_name(), {
-        params: {
-            query: searchTerm,
-        },
-    })
-    return response;
-}

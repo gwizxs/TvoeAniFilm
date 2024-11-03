@@ -1,22 +1,22 @@
 import { makeAutoObservable } from "mobx";
 import { fromPromise, IPromiseBasedObservable } from "mobx-utils";
-import { getFilms } from "@/shared/api/Films";
-import { Movie } from "@/shared/api/Films/types"; 
+import { getMovie } from "@/shared/api/Films";
+import type { Movie } from "@/shared/api/Films/types";
 
-class FilmStore {
+class MovieStore {
     constructor() {
         makeAutoObservable(this);
     }
 
-    filmsData?: IPromiseBasedObservable<Movie[] | []>;
+    moviesData?: IPromiseBasedObservable<Movie[]>;
 
-    getFilmsAction = async (page: number, limit: number) => {
+    getMoviesAction = async () => {
         try {
-            this.filmsData = fromPromise(getFilms({ page, limit }));
+            this.moviesData = fromPromise(getMovie());
         } catch (error) {
             console.log(error);
         }
     }
 }
 
-export const filmStore = new FilmStore();
+export const movieStore = new MovieStore();

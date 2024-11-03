@@ -1,12 +1,12 @@
 
-import { ListFilm } from "@/widgets/List-films";
+import { CardFilm } from "@/entities/Cards-Film";
 
 
 
 export default function Movies() {
     return (
         <div>
-            <ListFilm/>
+        <CardFilm item={undefined} />
         </div>
     )
 }
